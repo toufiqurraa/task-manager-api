@@ -1,6 +1,6 @@
-const connectDB = require('./config/db')
+require('dotenv').config()
 
-const dotenv = require('dotenv').config()
+const connectDB = require('./config/db')
 
 const express = require('express')
 const app = express()
@@ -14,6 +14,7 @@ app.use('/api/v1/tasks', require('./routes/tasksRoutes'))
 
 const PORT = process.env.PORT || 5000
 
+// Connection to the database & app launch
 const startApp = async () => {
   try {
     const conn = await connectDB(process.env.MONGO_URI)
